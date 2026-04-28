@@ -116,7 +116,9 @@
     </main>
 
     <script>
-      const sessionUrl = new URL("./timeswap-session.json", window.location.href);
+      const sessionUrl = new URL(
+        "https://raw.githubusercontent.com/turiyaterapiaholistica-eng/timeswap-bootstrap/main/timeswap-session.json",
+      );
       const statusEl = document.getElementById("status");
       const bootstrapUrlEl = document.getElementById("bootstrap-url");
       const publicUrlEl = document.getElementById("public-url");
