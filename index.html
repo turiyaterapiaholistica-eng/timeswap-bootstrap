@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TimeSwap Live</title>
+    <meta http-equiv="refresh" content="1;url=https://forgot-productions-generated-serious.trycloudflare.com" />
     <meta name="robots" content="noindex" />
     <style>
       :root {
@@ -15,11 +16,7 @@
         --accent: #0f766e;
         --border: #dbe4f0;
       }
-
-      * {
-        box-sizing: border-box;
-      }
-
+      * { box-sizing: border-box; }
       body {
         margin: 0;
         min-height: 100vh;
@@ -32,7 +29,6 @@
         font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         color: var(--text);
       }
-
       main {
         width: min(100%, 560px);
         background: var(--card);
@@ -41,31 +37,19 @@
         padding: 28px;
         box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
       }
-
       h1 {
         margin: 0 0 8px;
         font-size: 28px;
         line-height: 1.1;
       }
-
-      p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .stack {
-        margin-top: 20px;
-        display: grid;
-        gap: 14px;
-      }
-
+      p { margin: 0; color: var(--muted); }
+      .stack { margin-top: 20px; display: grid; gap: 14px; }
       .panel {
         border: 1px solid var(--border);
         border-radius: 18px;
         padding: 16px;
         background: #f8fafc;
       }
-
       .label {
         display: block;
         margin-bottom: 6px;
@@ -75,13 +59,11 @@
         color: var(--accent);
         font-weight: 700;
       }
-
       .link {
         word-break: break-word;
         color: var(--text);
         font-weight: 600;
       }
-
       .button {
         display: inline-flex;
         align-items: center;
@@ -99,66 +81,18 @@
   <body>
     <main>
       <h1>TimeSwap Live</h1>
-      <p id="status">Buscando a sessão pública mais recente...</p>
-
+      <p>Redirecionando para a sessão pública mais recente...</p>
       <div class="stack">
         <div class="panel">
-          <span class="label">URL fixa de bootstrap</span>
-          <div class="link" id="bootstrap-url">timeswap-session.json</div>
+          <span class="label">Link público atual</span>
+          <div class="link">https://forgot-productions-generated-serious.trycloudflare.com</div>
         </div>
         <div class="panel">
-          <span class="label">Link público atual</span>
-          <div class="link" id="public-url">Carregando...</div>
+          <span class="label">Sessão publicada em</span>
+          <div class="link">2026-04-28T22:05:05Z</div>
         </div>
       </div>
-
-      <a class="button" id="open-link" href="#" hidden>Abrir TimeSwap</a>
+      <a class="button" href="https://forgot-productions-generated-serious.trycloudflare.com">Abrir TimeSwap</a>
     </main>
-
-    <script>
-      const sessionUrl = new URL(
-        "https://raw.githubusercontent.com/turiyaterapiaholistica-eng/timeswap-bootstrap/main/timeswap-session.json",
-      );
-      const statusEl = document.getElementById("status");
-      const bootstrapUrlEl = document.getElementById("bootstrap-url");
-      const publicUrlEl = document.getElementById("public-url");
-      const openLinkEl = document.getElementById("open-link");
-
-      bootstrapUrlEl.textContent = sessionUrl.href;
-
-      async function loadSession() {
-        try {
-          const response = await fetch(sessionUrl.href, { cache: "no-store" });
-          if (!response.ok) {
-            throw new Error("bootstrap indisponível");
-          }
-
-          const session = await response.json();
-          const publicUrl = typeof session.publicUrl === "string" ? session.publicUrl.trim() : "";
-          const updatedAt = typeof session.updatedAt === "string" ? session.updatedAt : "";
-
-          if (!publicUrl) {
-            throw new Error("link público ausente");
-          }
-
-          publicUrlEl.textContent = publicUrl;
-          openLinkEl.href = publicUrl;
-          openLinkEl.hidden = false;
-          statusEl.textContent = updatedAt
-            ? `Sessão publicada em ${updatedAt}. Redirecionando...`
-            : "Sessão encontrada. Redirecionando...";
-
-          window.setTimeout(() => {
-            window.location.href = publicUrl;
-          }, 1200);
-        } catch (error) {
-          statusEl.textContent = "Não foi possível carregar a sessão automática agora.";
-          publicUrlEl.textContent = "Tente novamente em instantes ou verifique o arquivo timeswap-session.json.";
-          openLinkEl.hidden = true;
-        }
-      }
-
-      void loadSession();
-    </script>
   </body>
   </html>
